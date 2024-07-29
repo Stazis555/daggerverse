@@ -7,6 +7,6 @@
 
 ## Usage
 ```bash
-dagger -m <this-module-url> call with-registry-auth --address <registry-url> --username <registry-username> --secret <reg-pass-environment-name> build-crossplane-function --directory . --platform linux/amd64 --sock <docker-socket file>
+dagger -m <this-module-url> call with-registry-auth --address <registry-url> --username <registry-username> --secret <reg-pass-environment-name> build-crossplane-function --directory . --platform linux/amd64 --sock <docker-socket file> --imageRegistry <registry-url> --imageTag <image-tag>
 ```
 
