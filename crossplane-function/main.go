@@ -48,8 +48,6 @@ func (m *CrossplaneFunction) BuildCrossplaneFunction(
 	directory *dagger.Directory,
 	// The platform to build the function for. E.g. "linux/amd64".
 	platform string,
-	// The Docker socket to use. E.g. "/var/run/docker.sock".
-	sock *dagger.Socket,
 	// The image registry to push the function to.
 	imageRegistry string,
 	// The image tag to push the function with. E.g. "latest".
@@ -68,7 +66,6 @@ func (m *CrossplaneFunction) BuildCrossplaneFunction(
 		With(func(c *dagger.Container) *dagger.Container {
 			return m.RegistryConfig.SecretMount("/root/.docker/config.json").Mount(c)
 		}).
-		WithUnixSocket("/var/run/docker.sock", sock).
 		WithFile("/src/runtime", tarFile).
 		WithDirectory("/src/package", directory.Directory("package")).
 		WithoutEntrypoint().
